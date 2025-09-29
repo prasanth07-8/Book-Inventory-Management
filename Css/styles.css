@@ -1,0 +1,93 @@
+/* Example styles — change as you like */
+:root { --max: 520px; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(120deg, rgb(188, 185, 231), rgb(244, 174, 255), rgb(173, 216, 230));
+  color: #222;
+}
+
+.container {
+  max-width: var(--max);
+  margin: 5rem auto;
+  padding: 1rem 3rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: .5rem;
+}
+
+h1 { 
+  margin: 0 0 1rem; 
+  text-align: center;
+  padding-top: 20px;
+}
+
+.message {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+ul {
+  list-style: none;
+  padding: 25px;
+  margin: 1rem 0 0;
+}
+
+ul li {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: .5rem;
+  padding: .75rem 1rem;
+  margin-bottom: .5rem;
+}
+
+form {
+  display: grid;
+  gap: .5rem;
+  margin-top: 1.25rem;
+}
+
+input[type="text"] {
+  padding: .6rem .8rem;
+  border: 1px solid #d1d5db;
+  border-radius: .5rem;
+}
+
+button, input[type="submit"] {
+  padding: .6rem .9rem;
+  margin-top: 1.5rem;
+  border: 0;
+  border-radius: .5rem;
+  background: #2563eb;
+  color: #fff;
+  cursor: pointer;
+}
+button:hover, input[type="submit"]:hover { filter: brightness(1.05); }
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.message h4 {
+  color: green;
+}
+
+/* ✅ Show Data button centering */
+.showdata-btn {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.showdata-btn button {
+  padding: .6rem 1.2rem;
+  font-size: 16px;
+  background: #2563eb;   /* green */
+  border: none;
+  border-radius: .5rem;
+  color: #fff;
+  cursor: pointer;
+}
+.showdata-btn button:hover {
+  background: #376ee6;
+}

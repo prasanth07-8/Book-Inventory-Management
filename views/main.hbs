@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Inventory Management</title>
+    <link rel="stylesheet" href="Css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Books Inventory Management</h1>
+
+{{!-- Form section --}}
+{{#if edit_id}}
+  <h3>Edit Data</h3>
+  <form action="/update_book/{{edit_id}}" method="post">
+    <label>Title</label>
+    <input type="text" name="title" value="{{edit_book.title}}" />
+    {{#if errors.title}} <span class="error">{{errors.title}}</span> {{/if}}
+
+    <label>Author</label>
+    <input type="text" name="author" value="{{edit_book.author}}" />
+    {{#if errors.author}} <span class="error">{{errors.author}}</span> {{/if}}
+
+    <input type="submit" value="Update Book" />
+  </form>
+{{else}}
+  <h3>Add a Book Record</h3>
+  <form action="/store_book" method="post">
+    <label>Title</label>
+    <input type="text" name="title" value="{{old.title}}" />
+    {{#if errors.title}} <span class="error">{{errors.title}}</span> {{/if}}
+
+    <label>Author</label>
+    <input type="text" name="author" value="{{old.author}}" />
+    {{#if errors.author}} <span class="error">{{errors.author}}</span> {{/if}}
+
+    <input type="submit" value="Add Book" />
+  </form>
+{{/if}}
+
+<div class="message"><h4>{{messege}}</h4></div>
+
+{{!-- Toggle Button --}}
+<div class="showdata-btn">
+  <button id="toggleBtn" type="button">Show Data</button>
+</div>
+
+{{!-- Book List (hidden by default) --}}
+<div id="bookList" style="display: none;">
+    <ul>
+  {{#if books.length}}
+    {{#each books}}
+      <li>
+        {{this.title}} - {{this.author}}
+        <a href="/show_books?edit_id={{this._id}}">Edit</a>
+        <a href="/show_books?delete_id={{this._id}}" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+      </li>
+    {{/each}}
+  {{else}}
+    <li>No books found in the database.</li>
+  {{/if}}
+</ul>
+
+  </div>
+
+
+<script>
+  // Toggle button logic
+  const toggleBtn = document.getElementById('toggleBtn');
+  const bookList = document.getElementById('bookList');
+
+  toggleBtn.addEventListener('click', () => {
+    if (bookList.style.display === 'none') {
+      bookList.style.display = 'block';
+      toggleBtn.textContent = 'Hide Data';
+    } else {
+      bookList.style.display = 'none';
+      toggleBtn.textContent = 'Show Data';
+    }
+  });
+</script>
+
+    </div>
+</body>
+</html>
